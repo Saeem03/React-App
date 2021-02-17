@@ -7,39 +7,44 @@ import axios from 'axios';
 import {Row,Container,Col} from 'react-bootstrap';
 
 function Persons() {
-     function GetAllUSers() {
-        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LI33OQLSJTSAZVQBY3AGVAOY')
+    const [person, SetUserData] = useState({});
+     
+    useEffect(() => {
+        GetAllUSers();
+      return () => {
+
+      };
+    },[SetUserData] );
+
+    function GetAllUSers() {
+        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LJZYFBAV4G64ZBMBHLAGXMMY')
              .then(response => {
-                console.log("response",(response.data));
-                SetUserData(response.data);
+                console.log("response data",typeof(response.data),(JSON.parse(response.data)));
+                // console.log("response data",typeof(response.data));
+                console.log("response",typeof(response),(response));
+                // console.log("response",typeof(response));
+                SetUserData(response);
             }).catch(error => {
                 console.log(error);
             })
         }
-    const [person, SetUserData] = useState();
-    useEffect(() => {
-        GetAllUSers();
-      return () => {
-        GetAllUSers();
 
-      };
-    },[SetUserData] )
-        return (
-        <Container>
-            <Row>
-                <Col>
-                {console.log("in",{person})};
-                <h1>{person}</h1>
-                {console.log((typeof({person})))};
-                {/* <h1>{JSON.stringify(person)}</h1> */}
-                {/* <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
-                <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
-                <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
-                <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/> */}
-                </Col>
-            </Row>
-        </Container>
-    )
+    return (
+    <Container>
+        <Row>
+            <Col>
+            {/* {console.log("in",{person.data})}; */}
+            {/* {console.log((typeof({person})))}; */}
+            {/* <h1>{JSON.stringify(person)}</h1> */}
+            {/* <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
+            <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
+            <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
+            <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/> */}
+            </Col>
+        </Row>
+    </Container>
+)
+
 }
 
 export default Persons
