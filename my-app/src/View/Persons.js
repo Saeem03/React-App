@@ -7,38 +7,31 @@ import axios from 'axios';
 import {Row,Container,Col} from 'react-bootstrap';
 
 function Persons() {
-    const [person, setPerson] = useState([]);
+     function GetAllUSers() {
+        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LI33OQLSJTSAZVQBY3AGVAOY')
+             .then(response => {
+                console.log("response",(response.data));
+                SetUserData(response.data);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+    const [person, SetUserData] = useState();
     useEffect(() => {
+        GetAllUSers();
       return () => {
-         axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LI33OQLSJTSAZVQBY3AGVAOY')
-          .then(function (response) {
-            // handle success
-            setPerson(response.data);
-
-            console.log(typeof(response.data));
-            console.log(response);
-
-
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-          .then(function () {
-            // always executed
-          });
-          
-        
-    //   getUser();
+        GetAllUSers();
 
       };
-    },[setPerson] )
+    },[SetUserData] )
         return (
         <Container>
             <Row>
                 <Col>
-                {person.map(x => <h1>{x.name}</h1>)}
-                {/* {console.log((person.name))}; */}
+                {console.log("in",{person})};
+                <h1>{person}</h1>
+                {console.log((typeof({person})))};
+                {/* <h1>{JSON.stringify(person)}</h1> */}
                 {/* <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
                 <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
                 <PersonCards src={logo}  name="Md Saeem Hossain Shanto"/>
