@@ -17,13 +17,13 @@ function Persons() {
     },[SetUserData] );
 
     function GetAllUSers() {
-        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/test.json?token=AMKT4LP5TU2IXSXG27AEDELAGXTNW')
+        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/test.json?token=AMKT4LJGWUXTVOR4PIGIP5TAGXUFC')
              .then(response => {
                  // console.log("response data",typeof(response.data));
                  console.log("response",typeof(response),(response));
-                 console.log("response data",typeof(response.id),response.id);
+                 console.log("response data",typeof(response.data.user),response.data.user);
                 // console.log("response",typeof(response));
-                // SetUserData(response);
+                SetUserData(response.data.user);
             }).catch(error => {
                 console.log(error);
             })
@@ -33,6 +33,8 @@ function Persons() {
     <Container>
         <Row>
             <Col>
+            {console.log(person.id)}
+            {/* {person.map(x => <h1> {x.id} </h1>)} */}
             {/* {console.log("in",{person.data})}; */}
             {/* {console.log((typeof({person})))}; */}
             {/* <h1>{JSON.stringify(person)}</h1> */}
