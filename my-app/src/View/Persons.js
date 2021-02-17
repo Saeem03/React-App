@@ -19,11 +19,11 @@ function Persons() {
     function GetAllUSers() {
         axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LJZYFBAV4G64ZBMBHLAGXMMY')
              .then(response => {
-                console.log("response data",typeof(response.data),(JSON.parse(response.data)));
-                // console.log("response data",typeof(response.data));
-                console.log("response",typeof(response),(response));
+                 // console.log("response data",typeof(response.data));
+                 console.log("response",typeof(response),(response));
+                 console.log("response data",typeof(response.data.data.[0].email),response.data.data.[0].email);
                 // console.log("response",typeof(response));
-                SetUserData(response);
+                // SetUserData(response);
             }).catch(error => {
                 console.log(error);
             })
