@@ -17,11 +17,11 @@ function Persons() {
     },[SetUserData] );
 
     function GetAllUSers() {
-        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/Data.json?token=AMKT4LJZYFBAV4G64ZBMBHLAGXMMY')
+        axios.get('https://raw.githubusercontent.com/Saeem03/React-App/main/my-app/Data/test.json?token=AMKT4LIFAE4247U6TDIUAHDAGXSOM')
              .then(response => {
                  // console.log("response data",typeof(response.data));
                  console.log("response",typeof(response),(response));
-                 console.log("response data",typeof(response.data.data.[0].email),response.data.data.[0].email);
+                 console.log("response data",typeof(response.data),response.data);
                 // console.log("response",typeof(response));
                 // SetUserData(response);
             }).catch(error => {
